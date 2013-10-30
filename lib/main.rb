@@ -4,10 +4,13 @@
 # Funcion QuickSort Recursiva 
 def quicksort(list)
   return list if list.length <= 1
-  pivot = list.shift
-  left, right = list.partition { |el| el < pivot }
-  quicksort(left) + [pivot] + quicksort(right)
+  pivot = list.shift  # saca el primero elemento de la lista 
+  left, right = list.partition { |el| el < pivot }   #Separa en dos arreglo (lo comparado) 
+  quicksort(left) + [pivot] + quicksort(right)      #junta la lista left con el pivote mas la lista right
+  
 end
+#Nota en esta implementacion tienen un problema, ya que si esta ordenado el arreglo creara una lista izquierda vacia eso es ineficiente
+#esto es por esta implementacion (list.shift)
 
 
 arrays=[]
