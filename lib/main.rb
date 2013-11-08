@@ -1,6 +1,6 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
-
+require 'benchmark'
 # Funcion QuickSort Recursiva 
 def quicksort(list)
   return list if list.length <= 1
@@ -17,22 +17,35 @@ arrays=[]
 arraysOrdenado=[]
 r= Random.new
 
-for i in(0..9)
+for i in(0..99)
   arrays[i]=r.rand(0...99)
 end
 puts 'Arreglo No Ordenado'
 
 #imprime el Arrelo No Ordenado
-for i in(0..9)
-  puts arrays[i];
-end
+#for i in(0..9)
+ # puts arrays[i];
+#end
 
 puts '------------------------------'
 puts 'Arreglo Ordenado'
 
-arraysOrdenado=quicksort(arrays)
+Benchmark.bm do |x|
+
+ x.report("tiempos arreglo desordenado : ") { arraysOrdenado=quicksort(arrays) }
+ 
+end
+puts ''
+puts' Arreglo Ordenado'
+Benchmark.bm do |x|
+
+ x.report("tiempos arreglo ordenado") { arraysOrdenado=quicksort(arraysOrdenado) }
+ 
+end
+
+
 
 #imprime el Arreglo Ordenado
-for i in(0..9)
-  puts arraysOrdenado[i];
-end
+#for i in(0..9)
+#  puts arraysOrdenado[i];
+#end
